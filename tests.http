@@ -1,0 +1,42 @@
+###
+GET http://127.0.0.1:8000/
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/cat/
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/ad/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/cat/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Новая категория"
+}
+
+###
+POST http://127.0.0.1:8000/ad/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Новосибирские котята, 3 месяца",
+  "author": "Аркадий",
+  "price": 5000,
+  "description": "Продаю сибирских котят, возраст 3 месяца.\nОчень милые и ручные.\nЛоточек знают на пятерку, кушают премиум корм.\nЖдут любящих и заботливых хозяев. Больше фотографий отправлю в личку, цена указана за 1 котенка.",
+  "address": "Москва, м. Студенческая",
+  "is_published": true
+}
+
+###
+GET http://127.0.0.1:8000/cat/1
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/ad/1
+Accept: application/json

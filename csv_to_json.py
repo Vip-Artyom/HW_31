@@ -28,5 +28,3 @@ def convert_to_json(csv_file, model_name, json_file):
 
     with open(json_file, 'w', encoding='utf-8') as jsonf:
         jsonf.write(json.dumps(result, ensure_ascii=False))
-
-convert_to_json(DATA_CATEGORY, "ads.category", JSON_CATEGORY)
