@@ -2,4 +2,4 @@ from django.http import JsonResponse
 
 
 def root(request):
-    return JsonResponse({"status": "ok"})
+    return JsonResponse({"status": "Привет Алиса!"})
