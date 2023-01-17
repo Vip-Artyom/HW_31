@@ -8,7 +8,7 @@ from django.views.generic import DetailView, ListView, UpdateView, DeleteView, C
 from ads.models import Ad, Category
 from users.models import Users
 
-PAGE_NUMBER = 5
+PAGE_NUMBER = 2
 
 
 def root(request):

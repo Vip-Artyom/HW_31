@@ -7,6 +7,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
@@ -24,6 +25,7 @@ class Ad(models.Model):
     class Meta:
         verbose_name = "Объявления"
         verbose_name_plural = "Объявлении"
+        ordering = ["-price"]
 
     def __str__(self):
         return self.name
