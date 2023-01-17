@@ -123,3 +123,15 @@ class AdDeleteView(DeleteView):
         ad = self.get_object()
         super().delete(request, *args, **kwargs)
         return JsonResponse({"id": ad.id}, safe=False)
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class AdImageUpload(UpdateView):
+    model = Ad
+    fields = "__all__"
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.image = request.FILES.get("image")
+        self.object.save()
+        return JsonResponse({"name": self.object.name, "image": self.object.image.url})
