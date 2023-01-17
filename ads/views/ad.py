@@ -33,7 +33,7 @@ class AdDetailView(DetailView):
 
 class AdListView(ListView):
     model = Ad
-    queryset = Ad.objects.all()
+    queryset = Ad.objects.all().select_related("author")
 
     def get(self, request, *args, **kwargs):
         super().get(request, *args, **kwargs)
@@ -112,8 +112,34 @@ class AdUpdateView(UpdateView):
             "price": self.object.price,
             "description": self.object.description,
             "is_published": self.object.is_published}, safe=False)
+
+    def patch(self, request, *args, **kwargs):
+        super().post(request, *args, **kwargs)
+        data = json.loads(request.body)
+
+        if "author" in data:
+            self.object.author = get_object_or_404(Users, username=data["username"])
+        if "category" in data:
+            self.object.category = get_object_or_404(Category, name=data["category"])
+        if "price" in data:
+            self.object.price = data["price"]
+        if "is_published" in data:
+            self.object.is_published = data["is_published"]
+        if "description" in data:
+            self.object.description = data["description"]
+        if "name" in data:
+            self.object.name = data["name"]
+
+        return JsonResponse({
+            "id": self.object.id,
+            "name": self.object.name,
+            "author": self.object.author.username,
+            "category": self.object.category.name,
+            "price": self.object.price,
+            "description": self.object.description,
+            "is_published": self.object.is_published}, safe=False)
     
-    
+
 @method_decorator(csrf_exempt, name="dispatch")
 class AdDeleteView(DeleteView):
     model = Ad
