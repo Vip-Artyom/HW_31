@@ -7,10 +7,10 @@ class Ad(models.Model):
     name = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     price = models.PositiveIntegerField()
-    description = models.TextField(null=True)
+    description = models.TextField()
     address = models.CharField(max_length=100)
-    is_published = models.BooleanField()
+    is_published = models.BooleanField(default=False)
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)

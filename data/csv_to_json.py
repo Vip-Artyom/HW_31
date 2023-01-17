@@ -2,9 +2,9 @@ import csv
 import json
 
 DATA_ADS = "data/ads.csv"
-JSON_ADS = "ads.json"
+JSON_ADS = "data/ads.json"
 DATA_CATEGORY = "data/categories.csv"
-JSON_CATEGORY = "categories.json"
+JSON_CATEGORY = "data/categories.json"
 
 
 def convert_to_json(csv_file, model_name, json_file):
