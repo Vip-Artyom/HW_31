@@ -8,6 +8,14 @@ class LocationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class UserLocationSerializer(serializers.ModelSerializer):
+    location = LocationSerializer(many=True)
+
+    class Meta:
+        model = Users
+        fields = ['username', 'location']
+
+
 class UserListSerializer(serializers.ModelSerializer):
     total_ads = serializers.IntegerField()
 
