@@ -28,12 +28,11 @@ class Users(models.Model):
     password = models.CharField(max_length=200)
     role = models.CharField(choices=UserRoles.choices, max_length=9)
     age = models.SmallIntegerField()
-    location = models.ManyToManyField(Location, null=True, blank=True)
+    location = models.ManyToManyField(Location)
 
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
-        ordering = ["username"]
 
     def __str__(self):
         return self.username
