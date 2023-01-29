@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -21,11 +22,7 @@ class UserRoles(models.TextChoices):
     ADMIN = "admin", _("admin")
 
 
-class Users(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    username = models.CharField(max_length=100, unique=True)
-    password = models.CharField(max_length=200)
+class Users(AbstractUser):
     role = models.CharField(choices=UserRoles.choices, max_length=9)
     age = models.SmallIntegerField()
     location = models.ManyToManyField(Location)
