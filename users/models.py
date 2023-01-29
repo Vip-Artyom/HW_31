@@ -23,9 +23,13 @@ class UserRoles(models.TextChoices):
 
 
 class Users(AbstractUser):
-    role = models.CharField(choices=UserRoles.choices, max_length=9)
-    age = models.SmallIntegerField()
+    role = models.CharField(choices=UserRoles.choices, default=UserRoles.MEMBER, max_length=9)
+    age = models.SmallIntegerField(null=True)
     location = models.ManyToManyField(Location)
+
+    def save(self, *args, **kwargs):
+        self.set_password(self.password)
+        return super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Пользователь"

@@ -1,6 +1,7 @@
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 from users.views import *
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = SimpleRouter()
 router.register('location', LocationViewSet)
@@ -12,6 +13,7 @@ urlpatterns = [
     path("<int:pk>/update/", UserUpdateView.as_view()),
     path("<int:pk>/delete/", UserDeleteView.as_view()),
 
-    path
+    path('token/', TokenObtainPairView.as_view()),
+    path('token/refresh/', TokenRefreshView.as_view()),
 ]
 urlpatterns += router.urls
