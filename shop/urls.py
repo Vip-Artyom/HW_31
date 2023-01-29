@@ -27,6 +27,7 @@ urlpatterns = [
     path("cat/", include("ads.urls.cat")),
     path("ad/", include("ads.urls.ad")),
     path("user/", include("users.urls")),
+    path("selection/", include("ads.urls.selection")),
 ]
 
 if settings.DEBUG:
