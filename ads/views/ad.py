@@ -5,6 +5,7 @@ from django.views.generic import UpdateView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
+from ads.permissions import IsAdOwnerOrStaff
 from ads.serializers.ad_serializers import *
 
 
@@ -21,7 +22,12 @@ class AdViewSet(ModelViewSet):
     }
 
     default_permissions = [AllowAny()]
-    permission_list = {"retrieve": [IsAuthenticated()]}
+    permission_list = {
+        "retrieve": [IsAuthenticated()],
+        "update": [IsAuthenticated(), IsAdOwnerOrStaff()],
+        "partial_update": [IsAuthenticated(), IsAdOwnerOrStaff()],
+        "destroy": [IsAuthenticated(), IsAdOwnerOrStaff()],
+    }
 
     pagination_class = AdPagination
 
