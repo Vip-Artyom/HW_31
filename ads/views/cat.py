@@ -1,5 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from ads.serializers.cat_serializers import *
+from ads.models import Category
+from ads.serializers.cat_serializers import CatSerializer
 
 
 class CatViewSet(ModelViewSet):

@@ -5,8 +5,9 @@ from django.views.generic import UpdateView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
+from ads.models import Ad
 from ads.permissions import IsAdOwnerOrStaff
-from ads.serializers.ad_serializers import *
+from ads.serializers.ad_serializers import AdSerializer, AdDetailSerializer, AdListSerializer
 
 
 class AdPagination(PageNumberPagination):

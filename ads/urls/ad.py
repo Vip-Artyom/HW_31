@@ -1,5 +1,5 @@
 from django.urls import path
-from ads.views.ad import *
+from ads.views.ad import AdViewSet, AdImageUpload
 from rest_framework.routers import SimpleRouter
 
 router = SimpleRouter()

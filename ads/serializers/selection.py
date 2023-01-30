@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-
 from ads.models import Selection
 from users.models import UserRoles, Users
 

@@ -1,4 +1,4 @@
-from ads.views.cat import *
+from ads.views.cat import CatViewSet
 from rest_framework.routers import SimpleRouter
 
 router = SimpleRouter()
