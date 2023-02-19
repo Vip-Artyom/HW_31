@@ -12,7 +12,7 @@ def user_token(client, django_user_model):
         password=password,
         role='admin',
         birth_date='1988-10-11',
-        email='@email.ru'
+        email='ghj@email.ru'
     )
 
     response = client.post(
@@ -21,4 +21,4 @@ def user_token(client, django_user_model):
         format='json'
     )
 
-    return response.data['access']
+    return response.get('access')
