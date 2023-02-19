@@ -7,7 +7,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from ads.models import Ad
 from ads.permissions import IsAdOwnerOrStaff
-from ads.serializers.ad_serializers import AdSerializer, AdDetailSerializer, AdListSerializer
+from ads.serializers.ad_serializers import AdSerializer, AdDetailSerializer, AdListSerializer, AdCreateSerializer
 
 
 class AdPagination(PageNumberPagination):
@@ -20,6 +20,7 @@ class AdViewSet(ModelViewSet):
     serializer_classes = {
         'retrieve': AdDetailSerializer,
         'list': AdListSerializer,
+        'create': AdCreateSerializer,
     }
 
     default_permissions = [AllowAny()]
