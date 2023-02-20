@@ -3,19 +3,19 @@ from tests.factories import AdFactory
 
 
 @pytest.mark.django_db
-def test_create_selection(client, user, user_token):
+def test_create_selection(client, users, user_token):
     ad_list = AdFactory.create_batch(3)
 
     expected_response = {
         "id": 1,
         "name": "test selection",
-        "owner": user.username,
+        "owner": users.username,
         "items": [ad.pk for ad in ad_list]
     }
 
     data = {
         'name': 'test selection',
-        'owner': user.username,
+        'owner': users.username,
         'items': [ad.pk for ad in ad_list],
     }
 

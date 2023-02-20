@@ -2,29 +2,29 @@ import pytest
 
 
 @pytest.mark.django_db
-def test_create_ad(client, user, category, user_token):
-    expected_response = {
-        "id": 1,
-        "category": category.pk,
-        "is_published": False,
-        "name": 'name name name',
-        "price": 18000,
-        "description": None,
-        "author": user.id,
-    }
-
+def test_create_ad(client, users, category, user_token):
     data = {
-        "name": 'name name name',
+        "name": "name name name",
         "price": 18000,
-        "author": user.id,
+        "author": users.pk,
         "category": category.pk
     }
 
+    expected_response = {
+        "id": 1,
+        "is_published": False,
+        "name": "name name name",
+        "price": 18000,
+        "description": None,
+        "image": None,
+        "author": users.pk,
+        "category": category.pk,
+    }
+
     response = client.post(
-        '/ad/create/',
+        "/ad/",
         data,
-        HTTP_AUTHORIZATION="Bearer " + user_token,
-        content_type='application/json'
+        HTTP_AUTHORIZATION="Bearer " + user_token
     )
 
     assert response.status_code == 201
