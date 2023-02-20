@@ -14,16 +14,17 @@ def test_create_selection(client, users, user_token):
     }
 
     data = {
-        'name': 'test selection',
-        'owner': users.username,
-        'items': [ad.pk for ad in ad_list],
+        "name": "test selection",
+        "owner": users.username,
+        "items": [ad.pk for ad in ad_list],
     }
 
     response = client.post(
-        '/selection/create/',
+        "/selection/create/",
         data,
-        content_type='application/json',
-        HTTP_AUTHORIZATION='Bearer ' + user_token
+        HTTP_AUTHORIZATION="Bearer " + user_token,
+        content_type="application/json",
+
     )
 
     assert response.status_code == 201
