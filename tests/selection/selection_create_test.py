@@ -20,7 +20,7 @@ def test_create_selection(client, users, user_token):
     }
 
     response = client.post(
-        "/selection/create/",
+        "/selection/",
         data,
         HTTP_AUTHORIZATION="Bearer " + user_token,
         content_type="application/json",
